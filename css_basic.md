@@ -188,3 +188,58 @@ p {
   <div style="color: white; background-color: black;">...</div>
 </body>
 ```
+## Cascata
+- sistema de regras e prioridades que o navegador usa para resolver conflitos quando mais de uma regra de estilo se aplica a um mesmo elemento.
+### fator 1: Origem e Importância
+- os estilos de uma página podem vir de 3 lugares diferentes:
+```
+- User-Agent (Navegador): Todo navegador (Chrome, Firefox, etc.) tem sua própria folha de estilos padrão. É por isso que, mesmo sem CSS nenhum, os links são azuis e sublinhados e os títulos <h1> são grandes e em negrito. Esta é a "lei" de menor peso.
+
+- Author (Desenvolvedor): Este é o CSS que nós escrevemos. Nossos arquivos .css são as "leis" que criamos para o nosso site. Em condições normais, nossos estilos sempre prevalecem sobre os estilos padrão do navegador.
+
+- User (Usuário): Alguns usuários, muitas vezes por questões de acessibilidade (como daltonismo ou baixa visão), podem ter sua própria folha de estilos personalizada para, por exemplo, forçar todas as fontes a serem maiores ou de maior contraste.
+```
+- a ordem de prioridade é Author -> User -> User-Agent
+### fator 2: Especificidade
+- uma declaração CSS mais específica, vai ter mais precedência que uma menos específica. O estilo inline por exemplo, tem mais especificidade que os seletores.
+- Um seletor do tipo ID vai ser mais específico que um do tipo Classe que por sua vez vai ser mais do que os type selectores
+- Quando não há uma precedência de seletores mais específicos que outros, o que vai valer vai ser o seletor que tiver mais elementos vai ter precedencia sobre o que tem menos:
+```html
+<!-- index.html -->
+
+<div class="main">
+  <div class="list subsection">Red text</div>
+</div>
+```
+```css
+/* rule 1 */
+.subsection {
+  color: blue;
+}
+
+/* rule 2 */
+.main .list {
+  color: red;
+}
+```
+- a rule 2 vai ter precedencia
+- agora outro exemplo:
+```html
+<!-- index.html -->
+
+<div class="main">
+  <div class="list" id="subsection">Blue text</div>
+</div>
+```
+```css
+/* rule 1 */
+#subsection {
+  color: blue;
+}
+
+/* rule 2 */
+.main .list {
+  color: red;
+}
+```
+- a rule 1 vai ter precedencia, pois tem o seletor do tipo ID
