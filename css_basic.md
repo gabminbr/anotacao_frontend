@@ -243,3 +243,36 @@ p {
 }
 ```
 - a rule 1 vai ter precedencia, pois tem o seletor do tipo ID
+
+## Box Model
+- tudo no css é uma box, e devemos entender o que são o *padding*, *margin* e *border*.
+```
+padding: é o espaço entre a borda da caixa e o conteúdo dentro da caixa
+border: como o nome diz, é a 'borda' da caixa, é o espaço entre o padding e o margin
+margin: é o espaço entre as borders da caixa com as borders de outras caixas
+```
+- o box-sizing: (border-box) basicamente, ele vai fazer com que a soma content + padding + border tenha o tamanho que colocamos como width e height.
+- já o content-box é o padrão, o content vai ter o mesmo tamanho que declaramos no width e height, entretanto, vai somar com padding e border, e no fim vai ser na tela algo maior que o tamanho do content q colocamos.
+- exemplo:
+```css
+.box1 {
+  box-sizing: border-box;
+  color: rgb(0,0,0);
+  width: 700px;
+  margin: 30px;
+  border: 20px solid black;
+  padding: 30px;
+}
+```
+
+## Block e Inline
+- basicamente, block elements são aqueles que vao se agrupar como uma pilha, um embaixo do outro, tipo o <p></p>, <h1></h2>.
+- temos o div, que basicamente vai servir como um container para agruparmos varios elementos que queremos colocar scripts ou css
+- Divs allow us to divide the page into different blocks and apply styling to those blocks.
+- já os inline elements, não vão começar em uma nova linha, eles vão aparecer na linha que for colocado, um exemplo é o de link, o <a></a>
+- o display property, vai servir para transformar em inline ou block.
+- button por exemplo, é um inline block, inline pq ele fica lado a lado do elemento na linha, e block pois pode colocar as properties como width e etc.
+
+  ## FlexBox
+  - 
+- para inline, temos um container também, que vai ser o span
