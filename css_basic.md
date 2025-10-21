@@ -272,7 +272,42 @@ margin: é o espaço entre as borders da caixa com as borders de outras caixas
 - já os inline elements, não vão começar em uma nova linha, eles vão aparecer na linha que for colocado, um exemplo é o de link, o <a></a>
 - o display property, vai servir para transformar em inline ou block.
 - button por exemplo, é um inline block, inline pq ele fica lado a lado do elemento na linha, e block pois pode colocar as properties como width e etc.
+- para inline, temos um container também, que vai ser o span.
 
   ## FlexBox
-  - 
-- para inline, temos um container também, que vai ser o span
+- exemplo de uso:
+```html
+<div class="flex-container">
+  <div class="one"></div>
+  <div class="two"></div>
+  <div class="three"></div>
+</div>
+```
+```css
+.flex-container {
+  display: flex; 
+}
+
+/* this selector selects all divs inside of .flex-container */
+.flex-container div {
+  background: peachpuff;
+  border: 4px solid brown;
+  height: 100px;
+  flex: 1; 
+}
+```
+- flex containers e flex items: o flex container vai ser qualquer elemento que tiver a propriedade *display: flex*, já o flex item vai ser qualquer elemento que estiver dentro do flex container
+- qualquer elemento pode se tornar um flex container, um flex item também pode ser um flex container
+- a declaração *flex:...*: na verdade, essa propriedade é um atalho para definir 3 propriedades ao mesmo tempo:
+```
+- flex-grow: é o 'fator de crescimento' daquele flex item, ao usarmos 1, estamos dizendo para que o flex item se estique e ocupe o espaço disponível, e vai ser igualmente distribuído entre todos, mas ao usar
+2 em um em especifico por exemplo, a proporcao ficaria dois items com tamanhos iguais, e um com o dobro.
+- flex-shrink: é parecido com o grow, mas é o 'fator de encolhimento' do flex item, vai dizer o quão 'generoso' é cada item para aceitar perder espaço, 1 sendo o padrão que diz que todos irão encolher uniformemente,
+o 0 especifica que aquele flex item não vai encolher e o 2 aceita encolher o dobro.
+- flex-basis: define o tamanho inicial dos flex items, ao usar o auto, ele vai usar o tamanho width que foi especificado, se usarmos o 0 ele vai meio que 'zerar' todos os flex itens em tamanho e ir moldando de acordo
+com as outras propriedades flex.
+```
+### Alignment
+- para ajustar a disposição dos itens do container ao longo do eixo X, usamos a propriedade *justify-content*, e para o eixo Y usamos o *align-items*, esses eixos se baseiam no *flex-direction* do container flex, se muda o container para column, o justify muda o eixo Y e etc.
+- **Gap**: adiciona um espaço específico entre os flex items, i.e: gap: 8px;
+
